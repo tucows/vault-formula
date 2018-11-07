@@ -13,7 +13,9 @@ script
 
   # Make sure to use all our CPUs, because Vault can block a scheduler thread
   export GOMAXPROCS=`nproc`
-
+  {% if vault.dev_mode %}
+  export VAULT_DEV_ROOT_TOKEN_ID={{ vault.dev_root_token }}
+  {% endif-%}
   exec /usr/local/bin/vault server \
 {%- if vault.dev_mode %}
     -dev \

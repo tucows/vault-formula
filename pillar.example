@@ -12,6 +12,7 @@ vault:
     enabled: false
   backend: {}
   dev_mode: true
+  dev_root_token: placeholder
   secure_download: true
   user: root
   group: root

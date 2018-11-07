@@ -10,6 +10,9 @@ Restart=on-abnormal
 ExecStart=/usr/local/bin/vault server {% if vault.dev_mode %}-dev{% else %} -config=/etc/vault/config/server.hcl{% endif %}
 User={{ vault.user }}
 Group={{ vault.group }}
+{% if vault.dev_mode %}
+Environment=VAULT_DEV_ROOT_TOKEN_ID={{ vault.dev_root_token }}
+{% endif %}
 
 [Install]
 WantedBy=multi-user.target
